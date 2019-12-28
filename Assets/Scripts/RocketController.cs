@@ -7,6 +7,7 @@ public class RocketController : MonoBehaviour
     private Rigidbody r;
     private bool isDead;
     private float currentFuel;
+    private LevelController levelController;
 
     [SerializeField] float thrustForce = 1000.0f;
     [SerializeField] float rotationForce = 250.0f;
@@ -18,6 +19,7 @@ public class RocketController : MonoBehaviour
         r = GetComponent<Rigidbody>();
         isDead = false;
         currentFuel = initialFuel;
+        levelController = new LevelController();
     }
 
     // Update is called once per frame
@@ -76,13 +78,11 @@ public class RocketController : MonoBehaviour
 
     private void OnDeath()
     {
-        LevelController l = new LevelController();
-        l.LoadScene();
+        levelController.ReloadCurrentLevel();
     }
 
     private void OnWin()
     {
-        LevelController l = new LevelController();
-        l.NextLevel();
+        levelController.NextLevel();
     }
 }
