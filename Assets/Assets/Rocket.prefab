@@ -113,6 +113,9 @@ MonoBehaviour:
   thrustForce: 1000
   rotationForce: 250
   initialFuel: 10
+  leftButton: {fileID: 0}
+  rightButton: {fileID: 0}
+  thrustButton: {fileID: 0}
 --- !u!64 &223974227
 MeshCollider:
   m_ObjectHideFlags: 0

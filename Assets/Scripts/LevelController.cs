@@ -23,6 +23,7 @@ public class LevelController : MonoBehaviour
     public void NextLevel()
     {
         int currentIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.UnloadScene("Level_" + currentIndex);
         SceneManager.LoadScene("Level_" + ++currentIndex);
     }
 }

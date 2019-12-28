@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RocketController : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class RocketController : MonoBehaviour
     [SerializeField] float thrustForce = 1000.0f;
     [SerializeField] float rotationForce = 250.0f;
     [SerializeField] float initialFuel = 10.0f;
+
+    [SerializeField] InputController leftButton;
+    [SerializeField] InputController rightButton;
+    [SerializeField] InputController thrustButton;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +36,7 @@ public class RocketController : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || thrustButton.isPressed)
         {
             Debug.Log(currentFuel);
             if(currentFuel > 0.0f)
@@ -40,16 +45,16 @@ public class RocketController : MonoBehaviour
                 currentFuel -= 1.0f * Time.deltaTime;
             }
         }
-
+        
         r.freezeRotation = true;
 
         Vector3 rotation = new Vector3(0.0f, 1.0f, 0.0f) * rotationForce * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || leftButton.isPressed)
         {
             transform.Rotate(-rotation);
         }
-        if(Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.D) || rightButton.isPressed)
         {
             transform.Rotate(rotation);
         }
