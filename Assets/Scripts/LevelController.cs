@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    private const int MAIN_MENU_INDEX = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +19,18 @@ public class LevelController : MonoBehaviour
 
     public void ReloadCurrentLevel()
     {
-        SceneManager.LoadScene("Level_" + (SceneManager.GetActiveScene().buildIndex + 1));
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void NextLevel()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.UnloadScene("Level_" + currentIndex);
-        SceneManager.LoadScene("Level_" + ++currentIndex);
+        SceneManager.UnloadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.UnloadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(MAIN_MENU_INDEX);
     }
 }
