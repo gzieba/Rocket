@@ -5,6 +5,11 @@ using UnityEngine;
 public class ParticleController : MonoBehaviour
 {
     private ParticleSystem p;
+
+    private bool isPlaying = false;
+
+    [SerializeField] InputController thrustButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +20,21 @@ public class ParticleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || thrustButton.isPressed)
         {
-            p.Play();
+            if(!isPlaying)
+            {
+                p.Play();
+                isPlaying = true;
+            }
         }
-        if(Input.GetKeyUp(KeyCode.Space))
+        if(Input.GetKeyUp(KeyCode.Space) || !thrustButton.isPressed)
         {
-            p.Stop();
+            if(isPlaying)
+            {
+                p.Stop();
+                isPlaying = false;
+            }
         }
     }
 }

@@ -836,6 +836,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6516673573037017548, guid: 4095bbd1f17abcc4c9687595856255f7,
+        type: 3}
+      propertyPath: thrustButton
+      value: 
+      objectReference: {fileID: 2059308111}
     - target: {fileID: 7351974476087878693, guid: 4095bbd1f17abcc4c9687595856255f7,
         type: 3}
       propertyPath: leftButton
