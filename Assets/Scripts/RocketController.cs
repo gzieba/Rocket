@@ -42,7 +42,6 @@ public class RocketController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) || thrustButton.isPressed)
         {
-            Debug.Log(currentFuel);
             if(currentFuel > 0.0f)
             {
                 r.AddRelativeForce(new Vector3(0.0f, 0.0f, 1.0f) * thrustForce * Time.deltaTime);
@@ -73,12 +72,12 @@ public class RocketController : MonoBehaviour
             case "StartPlane":
                 break;
             case "FinishPlane":
-                Debug.Log("Koniec");
+                Debug.Log("Finish plane touched");
                 isDead = true;
                 Invoke("OnWin", 1.0f);
                 break;
             default:
-                Debug.Log("Dupa");
+                Debug.Log("Default collision behavior");
                 isDead = true;
                 Invoke("OnDeath", 1.0f);
                 break;
