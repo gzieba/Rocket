@@ -10,17 +10,21 @@ public class ParticleController : MonoBehaviour
 
     [SerializeField] InputController thrustButton;
 
+    private RocketController rocketController;
+
     // Start is called before the first frame update
     void Start()
     {
         p = GetComponent<ParticleSystem>();
         p.Stop();
+
+        rocketController = GetComponentInParent<RocketController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) || thrustButton.isPressed)
+        if((Input.GetKeyDown(KeyCode.Space) || thrustButton.isPressed) && rocketController.CurrentFuel() > 0.0f)
         {
             if(!isPlaying)
             {

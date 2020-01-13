@@ -14,6 +14,8 @@ public class RocketController : MonoBehaviour
     [SerializeField] float rotationForce = 250.0f;
     [SerializeField] float initialFuel = 10.0f;
 
+    [SerializeField] Text fuelDisplay;
+
     [SerializeField] InputController leftButton;
     [SerializeField] InputController rightButton;
     [SerializeField] InputController thrustButton;
@@ -32,6 +34,8 @@ public class RocketController : MonoBehaviour
     {
         if(!isDead)
             Movement();
+
+        fuelDisplay.text = currentFuel >= 0.0f ? currentFuel.ToString("F2") : "0,00";
     }
 
     void Movement()
@@ -89,5 +93,10 @@ public class RocketController : MonoBehaviour
     private void OnWin()
     {
         levelController.NextLevel();
+    }
+
+    public float CurrentFuel()
+    {
+        return currentFuel;
     }
 }
