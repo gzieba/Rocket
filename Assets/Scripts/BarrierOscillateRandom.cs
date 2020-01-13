@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrierOscillate : MonoBehaviour
+public class BarrierOscillateRandom : MonoBehaviour
 {
     private Vector3 initalPosition;
     [SerializeField] Vector3 movementVector = new Vector3(10f, 10f, 0.0f);
-    [SerializeField] float period = 2f;
     [SerializeField] float movementOffset = 0.5f;
 
+    float period;
     // Start is called before the first frame update
     void Start()
     {
         initalPosition = transform.position;
+        period = Random.value * 3.0f + 1.0f;
     }
 
     // Update is called once per frame

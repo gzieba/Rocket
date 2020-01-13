@@ -25,7 +25,7 @@ public class LevelController : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.UnloadScene(SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);       
     }
 
     public void LoadMainMenu()
